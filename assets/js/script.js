@@ -29,6 +29,8 @@ const lookupLocation = (search) => {
             var lat = data[0].lat;
             var lon = data[0].lon;
 
+            
+
             // Get the Weather for the cached location
             var apiUrl = `${WEATHER_API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${WEATHER_API_KEY}`;
             console.log(apiUrl);
@@ -39,11 +41,22 @@ const lookupLocation = (search) => {
                     console.log(data);
 
                     // Display the Current Weather
+                    displayWeather(data);
 
                     // Display the 5 Day Forecast
+                    displayForecast (data)
                 });
         });
 }
+var displayWeather = (weatherData) => {
+    var currentWeather = weatherData.current
+    
+    document.getElementById("temp-val").textContent =`${currentWeather.temp}`
+    document.getElementById("wind-val").textContent = `${currentWeather.wind_speed}`
+    document.getElementById("humidity-val").textContent = `${currentWeather.humidity}`
+
+}
+
 var locationInput = document.getElementById('location');
 
 //var locationInput = $("#location")
