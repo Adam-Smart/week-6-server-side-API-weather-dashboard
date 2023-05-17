@@ -54,12 +54,10 @@ var displayWeather = (weatherData) => {
     document.getElementById("temp-val").textContent =`${currentWeather.temp}`
     document.getElementById("wind-val").textContent = `${currentWeather.wind_speed}`
     document.getElementById("humidity-val").textContent = `${currentWeather.humidity}`
-
 }
 
-var locationInput = document.getElementById('location');
 
-//var locationInput = $("#location")
+var locationInput = document.getElementById('location');
 var searchBtn = $('#searchButton');
 
 searchBtn.on('click', getLocation);
