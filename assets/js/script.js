@@ -47,6 +47,7 @@ const lookupLocation = (search) => {
 
                     // Display the 5 Day Forecast
                     displayForecast (data)
+
                 });
         });
 }
@@ -58,13 +59,20 @@ var displayWeather = (weatherData) => {
     console.log(weatherData)
 }
 var displayForecast = (weatherData) => {
+    var dailyData = (weatherData.daily)
 
+     var dailyForecast = dailyData[1];
+     var day1 = new Date(dailyForecast.dt * 1000).toLocaleDateString('en-GB', { weekday: 'long'})
+     
+ console.log(day1)
+
+ $('#day1-val').text(day1);
     var weatherForecast = weatherData.daily[0]
     document.getElementById("day1temp-val").textContent = `${weatherForecast.temp.day}`
     document.getElementById("day1wind-val").textContent = `${weatherForecast.wind_speed}`
     document.getElementById("day1humidity-val").textContent = `${weatherForecast.humidity}`
 
-    console.log (weatherData.daily)
+    console.log (dailyData)
 
     var weatherForecast = weatherData.daily[1]
     document.getElementById("day2temp-val").textContent = `${weatherForecast.temp.day}`
