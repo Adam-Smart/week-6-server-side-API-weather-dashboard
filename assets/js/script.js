@@ -29,6 +29,8 @@ const lookupLocation = (search) => {
             var lat = data[0].lat;
             var lon = data[0].lon;
 
+            document.getElementById("location-name").textContent =`${data[0].name}`
+
             
 
             // Get the Weather for the cached location
@@ -50,12 +52,45 @@ const lookupLocation = (search) => {
 }
 var displayWeather = (weatherData) => {
     var currentWeather = weatherData.current
-    
     document.getElementById("temp-val").textContent =`${currentWeather.temp}`
     document.getElementById("wind-val").textContent = `${currentWeather.wind_speed}`
     document.getElementById("humidity-val").textContent = `${currentWeather.humidity}`
+    console.log(weatherData)
 }
+var displayForecast = (weatherData) => {
 
+    var weatherForecast = weatherData.daily[0]
+    document.getElementById("day1temp-val").textContent = `${weatherForecast.temp.day}`
+    document.getElementById("day1wind-val").textContent = `${weatherForecast.wind_speed}`
+    document.getElementById("day1humidity-val").textContent = `${weatherForecast.humidity}`
+
+    console.log (weatherData.daily)
+
+    var weatherForecast = weatherData.daily[1]
+    document.getElementById("day2temp-val").textContent = `${weatherForecast.temp.day}`
+    document.getElementById("day2wind-val").textContent = `${weatherForecast.wind_speed}`
+    document.getElementById("day2humidity-val").textContent = `${weatherForecast.humidity}`
+
+    var weatherForecast = weatherData.daily[2]
+
+    document.getElementById("day3temp-val").textContent = `${weatherForecast.temp.day}`
+    document.getElementById("day3wind-val").textContent = `${weatherForecast.wind_speed}`
+    document.getElementById("day3humidity-val").textContent = `${weatherForecast.humidity}`
+
+    var weatherForecast = weatherData.daily[3]
+
+    document.getElementById("day4temp-val").textContent = `${weatherForecast.temp.day}`
+    document.getElementById("day4wind-val").textContent = `${weatherForecast.wind_speed}`
+    document.getElementById("day4humidity-val").textContent = `${weatherForecast.humidity}`
+
+    var weatherForecast = weatherData.daily[4]
+
+    document.getElementById("day5temp-val").textContent = `${weatherForecast.temp.day}`
+    document.getElementById("day5wind-val").textContent = `${weatherForecast.wind_speed}`
+    document.getElementById("day5humidity-val").textContent = `${weatherForecast.humidity}`
+    
+   
+}
 
 var locationInput = document.getElementById('location');
 var searchBtn = $('#searchButton');
