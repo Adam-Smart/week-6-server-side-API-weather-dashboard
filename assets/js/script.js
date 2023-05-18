@@ -1,5 +1,7 @@
 const WEATHER_API_BASE_URL = 'https://api.openweathermap.org';
-const WEATHER_API_KEY = 'f23ee9deb4e1a7450f3157c44ed020e1';
+const WEATHER_API_KEY = '3770aa61038a0816864d556d797ecb9f';
+// 3770aa61038a0816864d556d797ecb9f
+// 2efadc37633599cf59a59b304f97af51
 const MAX_DAILY_FORECAST = 5;
 
 var locationInput = $("#location")
@@ -24,8 +26,6 @@ const lookupLocation = (search) => {
 
             console.log(data);
 
-            // Pick the First location from the results
-            //const location = data[0];
             var lat = data[0].lat;
             var lon = data[0].lon;
 
@@ -34,7 +34,8 @@ const lookupLocation = (search) => {
             
 
             // Get the Weather for the cached location
-            var apiUrl = `${WEATHER_API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${WEATHER_API_KEY}`;
+            
+            var apiUrl = `${WEATHER_API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly&appid=${WEATHER_API_KEY}`;
             console.log(apiUrl);
             fetch(apiUrl)
                 .then(response => response.json())
@@ -52,11 +53,13 @@ const lookupLocation = (search) => {
         });
 }
 var displayWeather = (weatherData) => {
+    
     var currentWeather = weatherData.current
-    document.getElementById("temp-val").textContent =`${currentWeather.temp}`
-    document.getElementById("wind-val").textContent = `${currentWeather.wind_speed}`
-    document.getElementById("humidity-val").textContent = `${currentWeather.humidity}`
-    console.log(weatherData)
+
+    document.getElementById("temp-val").textContent =`${currentWeather.temp}°C`
+    document.getElementById("wind-val").textContent = `${currentWeather.wind_speed}Mph`
+    document.getElementById("humidity-val").textContent = `${currentWeather.humidity}%`
+
 }
 var displayForecast = (weatherData) => {
     var dailyData = (weatherData.daily)
@@ -68,9 +71,9 @@ var displayForecast = (weatherData) => {
 
     $('#day1-val').text(day1);
     var weatherForecast = weatherData.daily[0]
-    document.getElementById("day1temp-val").textContent = `${weatherForecast.temp.day}`
-    document.getElementById("day1wind-val").textContent = `${weatherForecast.wind_speed}`
-    document.getElementById("day1humidity-val").textContent = `${weatherForecast.humidity}`
+    document.getElementById("day1temp-val").textContent = `${weatherForecast.temp.day}°C`
+    document.getElementById("day1wind-val").textContent = `${weatherForecast.wind_speed}Mph`
+    document.getElementById("day1humidity-val").textContent = `${weatherForecast.humidity}%`
 
     console.log (dailyData)
 
@@ -79,9 +82,9 @@ var displayForecast = (weatherData) => {
 
     $('#day2-val').text(day2);
     var weatherForecast = weatherData.daily[1]
-    document.getElementById("day2temp-val").textContent = `${weatherForecast.temp.day}`
-    document.getElementById("day2wind-val").textContent = `${weatherForecast.wind_speed}`
-    document.getElementById("day2humidity-val").textContent = `${weatherForecast.humidity}`
+    document.getElementById("day2temp-val").textContent = `${weatherForecast.temp.day}°C`
+    document.getElementById("day2wind-val").textContent = `${weatherForecast.wind_speed}Mph`
+    document.getElementById("day2humidity-val").textContent = `${weatherForecast.humidity}%`
 
     var dailyForecast = dailyData[3];
      var day3 = new Date(dailyForecast.dt * 1000).toLocaleDateString('en-GB', { weekday: 'long'})
@@ -89,9 +92,9 @@ var displayForecast = (weatherData) => {
     var weatherForecast = weatherData.daily[2]
 
     $('#day3-val').text(day3);
-    document.getElementById("day3temp-val").textContent = `${weatherForecast.temp.day}`
-    document.getElementById("day3wind-val").textContent = `${weatherForecast.wind_speed}`
-    document.getElementById("day3humidity-val").textContent = `${weatherForecast.humidity}`
+    document.getElementById("day3temp-val").textContent = `${weatherForecast.temp.day}°C`
+    document.getElementById("day3wind-val").textContent = `${weatherForecast.wind_speed}Mph`
+    document.getElementById("day3humidity-val").textContent = `${weatherForecast.humidity}%`
 
     var dailyForecast = dailyData[4];
      var day4 = new Date(dailyForecast.dt * 1000).toLocaleDateString('en-GB', { weekday: 'long'})
@@ -99,9 +102,9 @@ var displayForecast = (weatherData) => {
     var weatherForecast = weatherData.daily[3]
     
     $('#day4-val').text(day4);
-    document.getElementById("day4temp-val").textContent = `${weatherForecast.temp.day}`
-    document.getElementById("day4wind-val").textContent = `${weatherForecast.wind_speed}`
-    document.getElementById("day4humidity-val").textContent = `${weatherForecast.humidity}`
+    document.getElementById("day4temp-val").textContent = `${weatherForecast.temp.day}°C`
+    document.getElementById("day4wind-val").textContent = `${weatherForecast.wind_speed}Mph`
+    document.getElementById("day4humidity-val").textContent = `${weatherForecast.humidity}%`
 
     var dailyForecast = dailyData[5];
      var day5 = new Date(dailyForecast.dt * 1000).toLocaleDateString('en-GB', { weekday: 'long'})
@@ -109,9 +112,9 @@ var displayForecast = (weatherData) => {
     var weatherForecast = weatherData.daily[4]
     
     $('#day5-val').text(day5);
-    document.getElementById("day5temp-val").textContent = `${weatherForecast.temp.day}`
-    document.getElementById("day5wind-val").textContent = `${weatherForecast.wind_speed}`
-    document.getElementById("day5humidity-val").textContent = `${weatherForecast.humidity}`
+    document.getElementById("day5temp-val").textContent = `${weatherForecast.temp.day}°C`
+    document.getElementById("day5wind-val").textContent = `${weatherForecast.wind_speed}Mph`
+    document.getElementById("day5humidity-val").textContent = `${weatherForecast.humidity}%`
     
    
 }

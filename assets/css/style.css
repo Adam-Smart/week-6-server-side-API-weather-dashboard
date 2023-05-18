@@ -18,24 +18,27 @@ body{
     
     
 }
-.day1weather-info{
+.day1-weather{
     margin: 15px;
     border-radius: 5px;
 }
 
-.day2weather-info{
+.day2-weather{
     margin: 15px;
     border-radius: 5px;
 }
-.day3weather-info{
+.day3-weather{
     margin: 15px;
     border-radius: 5px;
 }
-.day4weather-info{
+.day4-weather{
     margin: 15px;
     border-radius: 5px;
 }
-.day5weather-info{
+.day5-weather{
     margin: 15px;
     border-radius: 5px;
+}
+.hide{
+    display: none;
 }
