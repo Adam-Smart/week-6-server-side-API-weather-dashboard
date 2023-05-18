@@ -1,0 +1,21 @@
+:root {
+    --white: white;
+    --black: black;
+    --light: rgb(0, 162, 255);
+    --med: rgb(0, 102, 255);
+    --dark: rgb(0, 82, 158);
+}
+body{
+    background-color: var(--dark);
+}
+.card{
+    width: fit-content;
+    height: fit-content;
+    border: 1px;
+    background-color: var(--light);
+    color:var(--white);
+    padding: 10px;
+}
+.day1weather-info{
+    margin: 15px;
+}
