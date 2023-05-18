@@ -15,7 +15,27 @@ body{
     background-color: var(--light);
     color:var(--white);
     padding: 10px;
+    
+    
 }
 .day1weather-info{
     margin: 15px;
+    border-radius: 5px;
+}
+
+.day2weather-info{
+    margin: 15px;
+    border-radius: 5px;
+}
+.day3weather-info{
+    margin: 15px;
+    border-radius: 5px;
+}
+.day4weather-info{
+    margin: 15px;
+    border-radius: 5px;
+}
+.day5weather-info{
+    margin: 15px;
+    border-radius: 5px;
 }
