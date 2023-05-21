@@ -6,22 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel=stylesheet href="assets/css/style.css">
-</head>
-<body>
-    <header> 
+
+<header> 
         <h1>Weather Dashboard</h1>
     </header>
+</head>
+<body>
+    
+ 
+<main>
 
-    <aside>
+   <aside>
         <div class="search-bar">
           <input type="text" id="location" placeholder="Enter location here">
           <button id="searchButton">Search</button>
         </div>
         <div class="recent-serches" id="recent-locations">Locations:</div>
     </aside>
-    
+
+
+
     <section>
-        <div class="container" id="weather">
+        
+     <div class="container" id="weather">
             <div class="weather-location" id="location-name"> Location: </div>
            <div id = "weather-icon"></div>
                <div class="weather-information">
@@ -39,7 +46,6 @@
               </div>
            </div>
         </div>
-        
        <div id="forecast" > 
           <h2>5 Day Forecast</h2>
           <div id="forcast-days">
@@ -71,7 +77,7 @@
                     <span>Day:</span>
                     <span id="day2-val"></span>
                 </div>
-                <div id = "forecast-weather-icon"></div>
+                <div id = "day2-weather-icon"></div>
                 <div class="temperature">
                     <span>Temperature:</span>
                     <span id="day2temp-val"></span>
@@ -91,6 +97,7 @@
                         <span>Day:</span>
                         <span id="day3-val"></span>
                     </div>
+                    <div id = "day3-weather-icon"></div>
                     <div class="temperature">
                         <span>Temperature:</span>
                         <span id="day3temp-val"></span>
@@ -110,6 +117,7 @@
                             <span>Day:</span>
                             <span id="day4-val"></span>
                         </div>
+                        <div id = "day4-weather-icon"></div>
                         <div class="temperature">
                             <span>Temperature:</span>
                             <span id="day4temp-val"></span>
@@ -129,6 +137,7 @@
                                 <span>Day:</span>
                                 <span id="day5-val"></span>
                             </div>
+                            <div id = "day5-weather-icon"></div>
                             <div class="temperature">
                                 <span>Temperature:</span>
                                 <span id="day5temp-val"></span>
@@ -146,8 +155,9 @@
 
              
           </div>
-       </div>
-    </section>
+         </div>
+        </section>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
