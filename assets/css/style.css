@@ -2,34 +2,88 @@
     --white: white;
     --black: black;
     --light: rgb(0, 162, 255);
-    --med: rgb(0, 102, 255);
+    --mid: rgb(0, 102, 255);
     --dark: rgb(0, 82, 158);
 }
 header {
     text-align: center;
     color: var(--white);
-    background-color: var(--med);
-    width: 100%;
+    background-color: var(--mid);
+    width: 99%;
     height: 150px;
     margin-bottom: 10px;
     font-size: 300%;
+    border-radius: 5px;
+    border-width: 5px;
+    border-color: var(--white);
+    border-style: groove;
 }
 h1{
     margin: 0px;
 }
+h2{
+    color: var(--white);
+    font-size: 40px;
+    text-align: center;
+    background-color: var(--mid);
+    border-radius: 5px;
+    border-width: 5px;
+    border-color: var(--white);
+    border-style: groove;
+}
 body{
     background-color: var(--dark);
+    justify-content: flex-start;
 }
+main{
+    display: flex;
+}
+aside {
+    color: var(--white);
+    margin-right: 20px;
+    background-color: var(--light);
+    padding: 10px;
+    min-height: 500px;
+    height: fit-content;
+    width: fit-content;
+    min-width: 260px;
+    border-radius: 5px;
+    border-color:var(--white);
+    border-style: groove;
+    border-width: 5px;
+  }
+  
+.recent-location {
+    margin-top: 5px;
+    font-size: 25px;
+  }
+  .recent-location:hover{
+    background-color: grey;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #recent-locations{
+    margin-top: 5px;
+    font-size: 30px;
+  }
+  .search-bar{
+    font-size: 30px;
+  }
 .container{
     font-size: 25px;
-    width: fit-content;
-    height: fit-content;
+    width: 500px;
+    height: 200px;
     border: 1px;
     background-color: var(--light);
     color:var(--white);
     padding: 10px;
     margin: 15px;
     border-radius: 5px;
+    align-items: center;
+    border-width: 5px;
+    border-color: var(--white);
+    border-style: groove;
+    
 }
 .card{
     width: fit-content;
@@ -38,6 +92,10 @@ body{
     background-color: var(--light);
     color:var(--white);
     padding: 10px;
+    display:inline-block;
+    border-width: 5px;
+    border-color: var(--white);
+    border-style: groove;
     
 }
 .day1-weather{
