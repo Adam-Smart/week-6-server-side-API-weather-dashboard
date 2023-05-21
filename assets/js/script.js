@@ -8,11 +8,22 @@ var locationInput = $("#location")
 var getLocation = () => {
     var userLocation = locationInput.value;
     if (userLocation === "") {
-        locationError("Enter valid location");
+        locationError();
     } else {
         lookupLocation(userLocation)
     }
 }
+
+function locationError (){ 
+var errorMsg = "Enter Valid Location:"
+var messageDiv =document.getElementById("searchError")
+messageDiv.textContent = errorMsg
+    
+    setTimeout(function(){
+        messageDiv.style.display = "none"
+    },2000);
+    }
+
 
 // create an array of searched locations
 
