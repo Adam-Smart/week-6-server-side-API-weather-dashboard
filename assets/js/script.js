@@ -3,7 +3,6 @@ const WEATHER_API_KEY = '3770aa61038a0816864d556d797ecb9f';
 // 3770aa61038a0816864d556d797ecb9f
 // 2efadc37633599cf59a59b304f97af51
 const MAX_DAILY_FORECAST = 5;
-
 var locationInput = $("#location")
 var getLocation = () => {
     var userLocation = locationInput.value;
@@ -17,6 +16,8 @@ var getLocation = () => {
 // create an array of searched locations
 
 const lookupLocation = (search) => {
+
+    saveLocation(search);
 
     // Lookup the location to get the Lat/Lon
     var apiUrl = `${WEATHER_API_BASE_URL}/geo/1.0/direct?q=${search}&limit=5&appid=${WEATHER_API_KEY}`;
@@ -59,6 +60,8 @@ var displayWeather = (weatherData) => {
     document.getElementById("temp-val").textContent =`${currentWeather.temp}°C`
     document.getElementById("wind-val").textContent = `${currentWeather.wind_speed}Mph`
     document.getElementById("humidity-val").textContent = `${currentWeather.humidity}%`
+
+    console.log (currentWeather)
 
 }
 var displayForecast = (weatherData) => {
@@ -119,10 +122,53 @@ var displayForecast = (weatherData) => {
    
 }
 
+
+
+
+function loadLocation(){
+    const storedLocations = JSON.parse(localStorage.getItem("recentLocations"));
+
+    if (storedLocations !== null) {
+        recentLocations.push(...storedLocations);
+
+        for (let i = 0; i < recentLocations.length; i++){
+            var newLocation = document.createElement("div");
+            newLocation.classList.add("recent-location");
+            newLocation.textContent = recentLocations[i];
+
+            document.getElementById("recent-locations").appendChild(newLocation)
+console.log(newLocation)
+console.log(recentLocations[i])
+        }
+    }
+    
+}
+
+
+function saveLocationOnClick (event){
+    console.log ("This will save location")
+
+    const location = event.target.textContent;
+    lookupLocation(location);
+
+}
+function saveLocation(location){
+    const index = recentLocations.indexOf(location);
+
+    if (index === -1){
+        recentLocations.push(location);
+    
+        localStorage.setItem("recentLocations", JSON.stringify(recentLocations))
+    }
+
+}
+
 var locationInput = document.getElementById('location');
 var searchBtn = $('#searchButton');
 
 searchBtn.on('click', getLocation);
+
+loadLocation();
 
 
 // Add an event handler for the search button
