@@ -3,6 +3,7 @@ const WEATHER_API_KEY = '3770aa61038a0816864d556d797ecb9f';
 // 3770aa61038a0816864d556d797ecb9f
 // 2efadc37633599cf59a59b304f97af51
 const MAX_DAILY_FORECAST = 5;
+const recentLocations = []
 var locationInput = $("#location")
 var getLocation = () => {
     var userLocation = locationInput.value;
@@ -62,6 +63,13 @@ var displayWeather = (weatherData) => {
     document.getElementById("humidity-val").textContent = `${currentWeather.humidity}%`
 
     console.log (currentWeather)
+
+    var weatherIcon = document.getElementById('weather-icon');
+    weatherIcon.innerHTML = '';
+
+    var img = document.createElement("div");
+    img.innerHTML = ` <img src="https://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png"/>`
+    weatherIcon.appendChild(img);
 
 }
 var displayForecast = (weatherData) => {
@@ -135,6 +143,7 @@ function loadLocation(){
             var newLocation = document.createElement("div");
             newLocation.classList.add("recent-location");
             newLocation.textContent = recentLocations[i];
+            newLocation.addEventListener("click",saveLocationOnClick);
 
             document.getElementById("recent-locations").appendChild(newLocation)
 console.log(newLocation)
