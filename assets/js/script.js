@@ -1,8 +1,5 @@
 const WEATHER_API_BASE_URL = 'https://api.openweathermap.org';
 const WEATHER_API_KEY = '3770aa61038a0816864d556d797ecb9f';
-// 3770aa61038a0816864d556d797ecb9f
-// 2efadc37633599cf59a59b304f97af51
-const MAX_DAILY_FORECAST = 5;
 const recentLocations = []
 var locationInput = $("#location")
 var getLocation = () => {
@@ -13,25 +10,25 @@ var getLocation = () => {
         lookupLocation(userLocation)
     }
 }
-
+// Shows error message if no loacion is entered 
 function locationError (){ 
 var errorMsg = "Enter Valid Location:"
 var messageDiv =document.getElementById("searchError")
 messageDiv.textContent = errorMsg
-    
+    // Hides the error message after 2 seconds 
     setTimeout(function(){
         messageDiv.style.display = "none"
     },2000);
     }
 
 
-// create an array of searched locations
+// creates the array for searched locations
 
 const lookupLocation = (search) => {
-
+//Saves the searches into the local storage 
     saveLocation(search);
 
-    // Lookup the location to get the Lat/Lon
+    // Finds the location using the lat/lon
     var apiUrl = `${WEATHER_API_BASE_URL}/geo/1.0/direct?q=${search}&limit=5&appid=${WEATHER_API_KEY}`;
     fetch(apiUrl)
         .then(response => response.json())
@@ -46,7 +43,7 @@ const lookupLocation = (search) => {
 
             
 
-            // Get the Weather for the cached location
+            //Gets the weather for the location
             
             var apiUrl = `${WEATHER_API_BASE_URL}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly&appid=${WEATHER_API_KEY}`;
             console.log(apiUrl);
@@ -56,21 +53,22 @@ const lookupLocation = (search) => {
 
                     console.log(data);
 
-                    // Display the Current Weather
+                    // Shows the current weather
                     displayWeather(data);
 
-                    // Display the 5 Day Forecast
+                    // Shows the next five days forecast
                     displayForecast (data)
 
                 });
         });
 }
+// Displays all the information for the current weather
 var displayWeather = (weatherData) => {
     
     var currentWeather = weatherData.current
+    // Shows icon
     var weatherIcon = document.getElementById('weather-icon');
     weatherIcon.innerHTML = '';
-
     var img = document.createElement("div");
     img.innerHTML = ` <img src="https://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png"/>`
     weatherIcon.appendChild(img);
@@ -83,6 +81,7 @@ var displayWeather = (weatherData) => {
 
    
 }
+// Shows the weather for the next 5 day forecast
 var displayForecast = (weatherData) => {
     var dailyData = (weatherData.daily)
 
@@ -164,7 +163,7 @@ $('#day5-val').text(day5);
     
    
 }
-
+// Gets the locations from local storage
 function loadLocation(){
     const storedLocations = JSON.parse(localStorage.getItem("recentLocations"));
 
@@ -184,7 +183,7 @@ console.log(recentLocations[i])
     }
     
 }
-
+// Function for when you click it saves location
 function saveLocationOnClick (event){
     console.log ("This will save location")
 
@@ -192,6 +191,7 @@ function saveLocationOnClick (event){
     lookupLocation(location);
 
 }
+// Saves location and adds it to local storage array and to recent location list
 function saveLocation(location){
     const index = recentLocations.indexOf(location);
 
@@ -209,6 +209,3 @@ var searchBtn = $('#searchButton');
 searchBtn.on('click', getLocation);
 
 loadLocation();
-
-
-// Add an event handler for the search button
